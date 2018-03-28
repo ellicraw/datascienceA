@@ -85,8 +85,8 @@ def make_cumulative_trend_plot(y):
 # Load in the data from a CSV file that is comma seperated.
 antelope_dataframe = pd.read_csv('antelope_dataframe')
 antelope_dataframe.describe()
-# make_scatter_plot(antelope_dataframe, "X1", "X4")
-# make_histogram("X1", "X2", "X3", "X4")
+make_scatter_plot(antelope_dataframe, "X1", "X4")
+make_histogram("X1", "X2", "X3", "X4")
 make_cumulative_trend_plot("antelope_dataframe")
 
 plt.show()
