@@ -7,13 +7,34 @@ import pandas as pd
 
 def make_scatter_plot(dataframe, x_axis, y_axis):
   #Creates a scatter plot of x_axis vs y_axis along with model names.
+  x_label = ""
+  y_label = ""
+  if (x_axis == "X1"):
+      x_label = "spring fawn count/100"
+  elif (x_axis == "X2"):
+      x_label = "size of adult antelope population/100"
+  elif (x_axis == "X3"):
+      x_label = "annual precipitation"
+  else:
+      x_label = "winter severity index"
+
+  if (y_axis == "X1"):
+      y_label = "spring fawn count/100"
+  elif (y_axis == "X2"):
+      y_label = "size of adult antelope population/100"
+  elif (y_axis == "X3"):
+      y_label = "annual precipitation"
+  else:
+      y_label = "winter severity index"
 
   # Generate the scatter plot
+  chart_label = x_label + " vs. " + y_label
+  print(chart_label)
   x = dataframe[x_axis]
   y = dataframe[y_axis]
   plt.ylabel(y_axis)
   plt.xlabel(x_axis)
-  plt.scatter(x, y, color='black', label="")
+  plt.scatter(x, y, color='black', label=chart_label)
 
   # calc the trendline (it is simply a linear fitting)
   z = np.polyfit(x, y, 1)
@@ -46,8 +67,7 @@ def make_cumulative_trend_plot():
 # Load in the data from a CSV file that is comma seperated.
 antelope_dataframe = pd.read_csv('data_set.csv', sep=',')
 antelope_dataframe.describe()
-print('Spring Fawn Count vs Winter Severity')
-make_scatter_plot(antelope_dataframe, 'X1', 'X4')
+make_scatter_plot(antelope_dataframe, "X1", "X4")
 make_histogram("X1", "X2", "X3", "X4")
 #make_cumulative_trend_plot()
 
