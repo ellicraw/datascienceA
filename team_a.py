@@ -15,6 +15,13 @@ def make_scatter_plot(dataframe, x_axis, y_axis):
   plt.xlabel(x_axis)
   plt.scatter(x, y, color='black', label="")
 
+  # calc the trendline (it is simply a linear fitting)
+  z = np.polyfit(x, y, 1)
+  p = np.poly1d(z)
+  plt.plot(x, p(x))
+  # the line equation:
+  print( "y=%.6fx+(%.6f)"%(z[0],z[1]) )
+
 def make_histogram(param1, param2, param3, param4):
   plt.figure(figsize=(20, 5))
   plt.subplot(1, 4, 1)
